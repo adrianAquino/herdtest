@@ -76,20 +76,55 @@ footer {
 }
 
 /* ======= Botões ======= */
-button, .btn {
-    background-color: #5a3a22; /* marrom madeira */
-    color: #ffffff;
+/* Botões gerais */
+.btn, .btn-crud {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #154734; /* verde escuro */
+    color: #ffffff; /* marrom madeira */
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.3s ease;
     border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
     cursor: pointer;
-    transition: opacity 0.3s;
 }
 
-button:hover, .btn:hover {
-    opacity: 0.8;
+/* Hover */
+.btn:hover, .btn-crud:hover {
+    background-color: #0f3728; /* verde ainda mais escuro */
+    color: #a0a0a0; /* cinza */
 }
 
+/* Botões de ações na tabela */
+.btn-table {
+    padding: 6px 12px;
+    font-size: 14px;
+    margin: 2px;
+}
+
+/* Adicionar Produtor */
+.btn-add {
+    background-color: #154734;
+    color: #fff;
+}
+
+.btn-add:hover {
+    background-color: #0f3728;
+    color: #ddd;
+}
+
+/* Botão Voltar */
+.btn-back {
+    background-color: #5a3a22;
+    color: #fff;
+}
+
+.btn-back:hover {
+    background-color: #422b1a;
+    color: #ddd;
+}
 
 /* ======= Dashboard Inicial ======= */
 .dashboard {

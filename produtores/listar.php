@@ -10,8 +10,9 @@ $result = mysqli_query($conn, $sql);
 ?>
 <main>
     <h2>Lista de Produtores</h2>
-    <a href="adicionar.php" class="btn" style="margin-bottom: 15px;">Adicionar Produtor</a>
-
+    <a href="adicionar.php" class="btn-add btn-crud">+ Adicionar Produtor</a>
+    <br>
+    <br>
     <table class="tabela">
         <thead>
             <tr>

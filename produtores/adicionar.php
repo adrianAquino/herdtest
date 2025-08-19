@@ -78,9 +78,9 @@ if(isset($_POST['submit'])) {
         <input type="password" name="senha" required>
 
 
-        <button type="submit" name="submit" class="btn">Salvar</button>
+        <button type="submit" name="submit" class="btn-crud">Salvar</button>
     </form>
-    <a href="listar.php" class="btn" style="margin-top:10px;">Voltar</a>
+    <a href="listar.php" class="btn-back btn-crud">Voltar</a>
 </main>
 
 

@@ -107,9 +107,9 @@ if(isset($_POST['submit'])) {
         <label>Senha (deixe em branco para manter a atual):</label>
         <input type="password" name="senha">
 
-        <button type="submit" name="submit" class="btn">Atualizar</button>
+        <button type="submit" name="submit" class="btn-crud">Atualizar</button>
     </form>
-    <a href="listar.php" class="btn" style="margin-top:10px;">Voltar</a>
+    <a href="listar.php" class="btn-back btn-crud">Voltar</a>
 </main>
 
 
