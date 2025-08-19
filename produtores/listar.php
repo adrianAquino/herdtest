@@ -54,7 +54,7 @@ $result = mysqli_query($conn, $sql);
                         <td><?php echo $row['produtores_status']; ?></td>
                         <td>
                             <a href="editar.php?id=<?php echo $row['codProdutores']; ?>" class="btn-tabela editar">Editar</a>
-                            <a href="excluir.php?id=<?php echo $row['codProdutores']; ?>" class="btn-tabela excluir" onclick="return confirm('Tem certeza que deseja excluir este produtor?');">Excluir</a>
+                            <a href="excluir.php?id=<?php echo $produtor['codProdutores']; ?>" class="btn-tabela excluir">Excluir</a>
                         </td>
                     </tr>
                 <?php endwhile; ?>

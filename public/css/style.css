@@ -196,3 +196,37 @@ button:hover, .btn:hover {
 .btn-tabela.excluir:hover {
     background-color: #cc0000;
 }
+
+/* ======= Cadastros ======= */
+
+.form-crud {
+    max-width: 500px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-crud label {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #5a3a22;
+}
+
+.form-crud input {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #5a3a22;
+    margin-top: 5px;
+}
+
+.sucesso {
+    color: green;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.erro {
+    color: red;
+    text-align: center;
+    margin: 10px 0;
+}
