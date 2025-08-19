@@ -146,4 +146,53 @@ button:hover, .btn:hover {
     color: #ffffff;
 }
 
-/* ======= Fim do Dashboard Inicial ======= 
+/* ======= Fim do Dashboard Inicial ======= */
+
+/* ======= Listar ======= */
+
+.tabela {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.tabela th, .tabela td {
+    border: 1px solid #5a3a22;
+    padding: 10px;
+    text-align: left;
+}
+
+.tabela th {
+    background-color: #013220;
+    color: #ffffff;
+}
+
+.tabela tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.btn-tabela {
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    margin-right: 5px;
+    transition: background 0.2s;
+}
+
+.btn-tabela.editar {
+    background-color: #5a3a22;
+}
+
+.btn-tabela.editar:hover {
+    background-color: #7c5228;
+}
+
+.btn-tabela.excluir {
+    background-color: #990000;
+}
+
+.btn-tabela.excluir:hover {
+    background-color: #cc0000;
+}
