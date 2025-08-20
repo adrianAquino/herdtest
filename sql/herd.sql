@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 19-Ago-2025 às 20:15
+-- Tempo de geração: 20-Ago-2025 às 20:40
 -- Versão do servidor: 10.4.17-MariaDB
 -- versão do PHP: 8.0.1
 
@@ -88,15 +88,24 @@ INSERT INTO `produtores` (`codProdutores`, `nome`, `CPF`, `dataNascimento`, `ema
 CREATE TABLE `propriedades` (
   `codPropriedades` int(11) NOT NULL,
   `nome` varchar(255) NOT NULL,
+  `cidade` varchar(255) NOT NULL,
   `estado` varchar(255) NOT NULL,
   `estrada` varchar(255) NOT NULL,
   `areaTotal` decimal(10,3) NOT NULL,
   `latitude` decimal(9,6) NOT NULL,
   `longitude` decimal(9,6) NOT NULL,
-  `quantidadeAnimais` int(11) NOT NULL,
+  `quantidadeAnimais` int(11) DEFAULT NULL,
   `responsavelTecnico` varchar(255) DEFAULT NULL,
+  `propriedade_status` tinyint(1) NOT NULL DEFAULT 1,
   `idProdutores` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `propriedades`
+--
+
+INSERT INTO `propriedades` (`codPropriedades`, `nome`, `cidade`, `estado`, `estrada`, `areaTotal`, `latitude`, `longitude`, `quantidadeAnimais`, `responsavelTecnico`, `propriedade_status`, `idProdutores`) VALUES
+(1, 'Chácara São José', 'Cafezal do Sul', 'Paraná', 'Italo Orcelli', '8.000', '23.866977', '53.550775', NULL, 'Jaair Jr', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -172,7 +181,7 @@ ALTER TABLE `produtores`
 -- AUTO_INCREMENT de tabela `propriedades`
 --
 ALTER TABLE `propriedades`
-  MODIFY `codPropriedades` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codPropriedades` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `raca`
