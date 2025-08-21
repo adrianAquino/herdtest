@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 20-Ago-2025 às 20:40
+-- Tempo de geração: 21-Ago-2025 às 20:07
 -- Versão do servidor: 10.4.17-MariaDB
 -- versão do PHP: 8.0.1
 
@@ -46,6 +46,14 @@ CREATE TABLE `animais` (
   `idRaca` int(11) NOT NULL,
   `idPropriedades` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `animais`
+--
+
+INSERT INTO `animais` (`codAnimais`, `numeracaoBrinco`, `sexo`, `dataNascimento`, `idade`, `pelagem`, `origem`, `situacaoReprodutiva`, `nomePai`, `nomeMae`, `valorMercadoAtual`, `situacaoComercial`, `animal_status`, `idRaca`, `idPropriedades`) VALUES
+(4, 202030, 'Macho', '0000-00-00', 18, 'Branca', 'Compra Externa', 'Ativo', 'Ativo', 'n/d', '5500.00', 'Inativo', 1, 1, 1),
+(5, 202032, 'Macho', '0000-00-00', 17, 'Branca', 'Compra Externa', 'Ativo', 'n/d', 'n/d', '5000.00', 'Ativo', 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -105,7 +113,7 @@ CREATE TABLE `propriedades` (
 --
 
 INSERT INTO `propriedades` (`codPropriedades`, `nome`, `cidade`, `estado`, `estrada`, `areaTotal`, `latitude`, `longitude`, `quantidadeAnimais`, `responsavelTecnico`, `propriedade_status`, `idProdutores`) VALUES
-(1, 'Chácara São José', 'Cafezal do Sul', 'Paraná', 'Italo Orcelli', '8.000', '23.866977', '53.550775', NULL, 'Jaair Jr', 1, 2);
+(1, 'Chácara São José', 'Cafezal do Sul', 'Paraná', 'Italo Orcelli', '8.000', '23.866977', '53.550775', 0, 'Jair Jr', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -128,7 +136,8 @@ CREATE TABLE `raca` (
 
 INSERT INTO `raca` (`codRaca`, `nome`, `tipoRaca`, `descricao`, `origemRaca`, `raca_status`) VALUES
 (1, 'Nelore', 'Gado', 'Raça zebuína originária da Índia, conhecida por sua pelagem branca ou cinza clara e pele escura, que a torna adaptada ao clima tropical', 'Estrangeira', 1),
-(2, 'Holstein-Frisia', 'Gado', 'Raça bovina leiteira de grande porte, conhecida mundialmente pela sua alta produção de leite', 'Estrangeira', 1);
+(2, 'Holstein-Frisia', 'Gado', 'Raça bovina leiteira de grande porte, conhecida mundialmente pela sua alta produção de leite', 'Estrangeira', 1),
+(3, 'Angus', 'Gado', 'Angus é uma raça de bovinos, destinada à produção de carne de qualidade superior.', 'Estrangeira, Escócia', 1);
 
 --
 -- Índices para tabelas despejadas
@@ -139,8 +148,8 @@ INSERT INTO `raca` (`codRaca`, `nome`, `tipoRaca`, `descricao`, `origemRaca`, `r
 --
 ALTER TABLE `animais`
   ADD PRIMARY KEY (`codAnimais`),
-  ADD KEY `fk_propriedade_animal` (`idPropriedades`),
-  ADD KEY `fk_raca_animal` (`idRaca`);
+  ADD KEY `fk_propriedade_animais` (`idPropriedades`),
+  ADD KEY `fk_raca_animais` (`idRaca`);
 
 --
 -- Índices para tabela `produtores`
@@ -169,13 +178,13 @@ ALTER TABLE `raca`
 -- AUTO_INCREMENT de tabela `animais`
 --
 ALTER TABLE `animais`
-  MODIFY `codAnimais` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codAnimais` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `produtores`
 --
 ALTER TABLE `produtores`
-  MODIFY `codProdutores` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `codProdutores` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `propriedades`
@@ -187,7 +196,7 @@ ALTER TABLE `propriedades`
 -- AUTO_INCREMENT de tabela `raca`
 --
 ALTER TABLE `raca`
-  MODIFY `codRaca` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `codRaca` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restrições para despejos de tabelas
@@ -197,8 +206,8 @@ ALTER TABLE `raca`
 -- Limitadores para a tabela `animais`
 --
 ALTER TABLE `animais`
-  ADD CONSTRAINT `fk_propriedade_animal` FOREIGN KEY (`idPropriedades`) REFERENCES `propriedades` (`codPropriedades`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_raca_animal` FOREIGN KEY (`idRaca`) REFERENCES `raca` (`codRaca`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_propriedade_animais` FOREIGN KEY (`idPropriedades`) REFERENCES `propriedades` (`codPropriedades`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_raca_animais` FOREIGN KEY (`idRaca`) REFERENCES `raca` (`codRaca`) ON UPDATE CASCADE;
 
 --
 -- Limitadores para a tabela `propriedades`
