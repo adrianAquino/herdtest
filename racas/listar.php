@@ -37,7 +37,7 @@ $result = mysqli_query($conn, $sql);
                         <td><?php echo $row['raca_status']; ?></td>
                         <td>
                             <a href="editar.php?id=<?php echo $row['codRaca']; ?>" class="btn-tabela editar">Editar</a>
-                            <a href="excluir.php?id=<?php echo $produtor['codRaca']; ?>" class="btn-tabela excluir">Excluir</a>
+                            <a href="excluir.php?id=<?php echo $row['codRaca']; ?>" class="btn-tabela excluir">Excluir</a>
                         </td>
                     </tr>
                 <?php endwhile; ?>

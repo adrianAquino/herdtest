@@ -50,7 +50,7 @@ $result = mysqli_query($conn, $sql);
                         <td><?php echo $row['nomeProdutor']; ?></td>
                         <td>
                             <a href="editar.php?id=<?php echo $row['codPropriedades']; ?>" class="btn-tabela editar">Editar</a>
-                            <a href="excluir.php?id=<?php echo $propriedades['codPropriedades']; ?>" class="btn-tabela excluir">Excluir</a>
+                            <a href="excluir.php?id=<?php echo $row['codPropriedades']; ?>" class="btn-tabela excluir">Excluir</a>
                         </td>
                     </tr>
                 <?php endwhile; ?>
