@@ -4,31 +4,56 @@ include("../includes/header.php");
 
 if (isset($_POST['submit'])) {
     // Receber dados do formulário
-    $numeracaoBrinco = mysqli_real_escape_string($conn, $_POST['numeracaoBrinco']);
-    $sexo = mysqli_real_escape_string($conn, $_POST['sexo']);
-    $dataNascimento = mysqli_real_escape_string($conn, $_POST['dataNascimento']);
-    $idade = mysqli_real_escape_string($conn, $_POST['idade']);
-    $pelagem = mysqli_real_escape_string($conn, $_POST['pelagem']);
-    $origem = mysqli_real_escape_string($conn, $_POST['origem']);
-    $situacaoReprodutiva = mysqli_real_escape_string($conn, $_POST['situacaoReprodutiva']);
-    $nomePai = mysqli_real_escape_string($conn, $_POST['nomePai']);
-    $nomeMae = mysqli_real_escape_string($conn, $_POST['nomeMae']);
-    $valorMercadoAtual = mysqli_real_escape_string($conn, $_POST['valorMercadoAtual']);
-    $situacaoComercial = mysqli_real_escape_string($conn, $_POST['situacaoComercial']);
-    $idRaca = mysqli_real_escape_string($conn, $_POST['idRaca']);
-    $idPropriedade = mysqli_real_escape_string($conn, $_POST['idPropriedade']);
+    $numeracaoBrinco = trim($_POST['numeracaoBrinco']);
+    $sexo = trim($_POST['sexo']);
+    $dataNascimento = !empty($_POST['dataNascimento']) ? ($_POST['dataNascimento']) : null;
+    $idade = !empty($_POST['idade']) ? intval($_POST['idade']) : null;
+    $pelagem = trim($_POST['pelagem']);
+    $origem = trim($_POST['origem']);
+    $situacaoReprodutiva = trim($_POST['situacaoReprodutiva']);
+    $nomePai = trim($_POST['nomePai']);
+    $nomeMae = trim($_POST['nomeMae']);
+    $valorMercadoAtual = !empty($_POST['valorMercadoAtual']) ? floatval($_POST['valorMercadoAtual']) : null;
+    $situacaoComercial = trim($_POST['situacaoComercial']);
+    $idRaca = intval($_POST['idRaca']);
+    $idPropriedade = intval($_POST['idPropriedade']);
 
     // Query de inserção
     $sql = "INSERT INTO animais (
-        numeracaoBrinco, sexo, dataNascimento, idade, pelagem, origem, situacaoReprodutiva, nomePai, nomeMae, valorMercadoAtual, situacaoComercial, idRaca, idPropriedades
-    ) VALUES (
-        '$numeracaoBrinco', '$sexo', '$dataNascimento', '$idade', '$pelagem', '$origem', '$situacaoReprodutiva', '$nomePai', '$nomeMae', '$valorMercadoAtual', '$situacaoComercial', '$idRaca', '$idPropriedade'
-    )";
+        numeracaoBrinco, sexo, dataNascimento, idade, pelagem, origem, situacaoReprodutiva, nomePai, nomeMae, valorMercadoAtual,
+        situacaoComercial, idRaca, idPropriedades
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    if (mysqli_query($conn, $sql)) {
-        echo "<p class='sucesso'>Animal cadastrado com sucesso!</p>";
+    if ($stmt = $conn->prepare($sql)) {
+        $stmt->bind_param(
+            "sssisssssdsii",
+            $numeracaoBrinco,
+            $sexo,
+            $dataNascimento,
+            $idade,
+            $pelagem,
+            $origem,
+            $situacaoReprodutiva,
+            $nomePai,
+            $nomeMae,
+            $valorMercadoAtual,
+            $situacaoComercial,
+            $idRaca,
+            $idPropriedade
+        );
+
+
+        if ($stmt->execute()) {
+            echo "<p class='sucesso'>Animal cadastrado com sucesso!</p>";
+        } else {
+            error_log("Erro no cadastro de animal: " . $stmt->error);
+            echo "<p class='erro'>Ocorreu um erro ao cadastrar o animal. Tente novamente.</p>";
+        }
+
+        $stmt->close();
     } else {
-        echo "<p class='erro'>Erro ao cadastrar Animal: " . mysqli_error($conn) . "</p>";
+        error_log("Erro na preparação da query: " . $conn->error);
+        echo "<p class='erro'>Ocorreu um erro interno. Contate o administrador.</p>";
     }
 }
 
